@@ -39,6 +39,26 @@ const data = [
     name: "Crappy common",
     text: "I've lost count how many of these I have."
   },
+  {
+    id: 8,
+    name: "Card in opposition to humanity",
+    text: "The card text is too vulgar to repeat."
+  },
+  {
+    id: 9,
+    name: "RNGesus",
+    text: "Try praying - see if I care. lul"
+  },
+  {
+    id: 10,
+    name: "B.F.G.",
+    text: "The original is always the best."
+  },
+  {
+    id: 11,
+    name: "The Greener Hills of Stranglethorn - Chapter I",
+    text: "Who knew there was a second volume?"
+  },
 ];
 
 function randomInt (low, high) {
