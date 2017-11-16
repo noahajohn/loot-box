@@ -37,7 +37,7 @@ const data = [
   {
     id: 7,
     name: "Crappy common",
-    text: "I've lost count how many of these I have."
+    text: "I've lost count of how many I have."
   },
   {
     id: 8,
@@ -58,6 +58,106 @@ const data = [
     id: 11,
     name: "The Greener Hills of Stranglethorn - Chapter I",
     text: "Who knew there was a second volume?"
+  },
+  {
+    id: 12,
+    name: "Railgun",
+    text: "Who needs aimbots when you have mad skillz?"
+  },
+  {
+    id: 13,
+    name: "Angry Turds",
+    text: "Throw them against the wall and see if they stick!"
+  },
+  {
+    id: 14,
+    name: "IRL streamer",
+    text: "Being weird and nerdy for cheers!"
+  },
+  {
+    id: 15,
+    name: "Taco Baalz",
+    text: "I kill, U loot."
+  },
+  {
+    id: 16,
+    name: "That gem in chat",
+    text: "I swear clicking on it does something!"
+  },
+  {
+    id: 17,
+    name: "One of Wirt's many legs",
+    text: "We still haven't figured out how many he has."
+  },
+  {
+    id: 18,
+    name: "The Secret Cow Level",
+    text: "There is no cow level."
+  },
+  {
+    id: 19,
+    name: "The cake",
+    text: "It's a lie."
+  },
+  {
+    id: 20,
+    name: "1 DKP",
+    text: "Just don't wipe on Onyxia."
+  },
+  {
+    id: 21,
+    name: "Many whelps",
+    text: "Handle it!"
+  },
+  {
+    id: 22,
+    name: "Onyxia's tail",
+    text: "Watch the <bleep> tail!"
+  },
+  {
+    id: 23,
+    name: "Stream sniper",
+    text: "HeyGuys Sniperino."
+  },
+  {
+    id: 24,
+    name: "Kappa",
+    text: "I always thought this was a young Forsen."
+  },
+  {
+    id: 25,
+    name: "Epic Sax Guy",
+    text: "This never gets old."
+  },
+  {
+    id: 26,
+    name: "Rage quitter",
+    text: "Pain. Agony. My hatred burns."
+  },
+  {
+    id: 27,
+    name: "Pat PvP",
+    text: "Stronger then (sic) ever before."
+  },
+  {
+    id: 28,
+    name: "PUGs",
+    text: "LF2M: tank, healer."
+  },
+  {
+    id: 29,
+    name: "Pike Barb",
+    text: "Looking to high roll with Charsi."
+  },
+  {
+    id: 30,
+    name: "Power creep",
+    text: "This is objectively better."
+  },
+  {
+    id: 31,
+    name: "Javazon",
+    text: "AKA The Cow Killer."
   },
 ];
 
