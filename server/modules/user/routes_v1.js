@@ -182,7 +182,7 @@ const data = [
   {
     id: 36,
     name: "Spray decal bitmap",
-    text: "I spent 6 hours in paint to making this!"
+    text: "I spent 6 hours in Paint making this!"
   },
   {
     id: 37,
