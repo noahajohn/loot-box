@@ -147,7 +147,7 @@ const data = [
   {
     id: 29,
     name: "Pike Barb",
-    text: "Looking to high roll with Charsi."
+    text: "Would give anything to high roll with Charsi."
   },
   {
     id: 30,
@@ -158,6 +158,51 @@ const data = [
     id: 31,
     name: "Javazon",
     text: "AKA The Cow Killer."
+  },
+  {
+    id: 32,
+    name: "DNF in 2001",
+    text: "Don't you remember the E3 trailer?!"
+  },
+  {
+    id: 33,
+    name: "A rabbit",
+    text: "His name is Jack and he loves jazz."
+  },
+  {
+    id: 34,
+    name: "A hunter weapon",
+    text: "It actually looks like anyone can use it."
+  },
+  {
+    id: 35,
+    name: "Another hunter weapon",
+    text: "SMOrc!"
+  },
+  {
+    id: 36,
+    name: "Spray decal bitmap",
+    text: "I spent 6 hours in paint to making this!"
+  },
+  {
+    id: 37,
+    name: "That John Romero ad",
+    text: "We sure waited a while to become his <bleep>."
+  },
+  {
+    id: 38,
+    name: "One question for Gabe",
+    text: "Choose wisely."
+  },
+  {
+    id: 39,
+    name: "Duped SoJ",
+    text: "Looks like the real thing."
+  },
+  {
+    id: 40,
+    name: "Banana peel",
+    text: "The #1 cause of traffic accidents."
   },
 ];
 
