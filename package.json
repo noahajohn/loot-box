@@ -40,16 +40,19 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-env": "^0.4.4",
     "grunt-nodemon": "^0.4.0",
-    "load-grunt-tasks": "^3.2.0",
+    "grunt-shell": "^2.1.0",
+    "load-grunt-tasks": "^3.5.2",
     "lodash": "^4.17.2",
     "method-override": "^2.3.10",
     "mongoose": "^4.4.14",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
+    "request": "^2.83.0",
     "standard-http-error": "^2.0.1",
     "time-grunt": "^1.4.0"
   },
   "devDependencies": {
+    "csvtojson": "^1.1.9",
     "npm-check-updates": "^2.6.1"
   }
 }

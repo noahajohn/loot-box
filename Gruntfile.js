@@ -15,6 +15,18 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jsResources: [],
+    shell: {
+      command: './node_modules/csvtojson/bin/csvtojson --delimiter="\t" csvs/items.txt > server/data/items.json'
+    },
+    watch: {
+      csvs: {
+        files: 'csvs/items.txt',
+        tasks: ['shell'],
+        options: {
+          interrupt: true,
+        },
+      },
+    },
     jshint: {
       all: {
         src: paths.js,
@@ -41,8 +53,8 @@ module.exports = function(grunt) {
       }
     },
     concurrent: {
-      tasks: ['nodemon'],
-      // tasks: ['nodemon', 'watch'],
+      // tasks: ['nodemon'],
+      tasks: ['nodemon', 'watch'],
       options: {
         logConcurrentOutput: true
       }
@@ -56,7 +68,7 @@ module.exports = function(grunt) {
   if (process.env.NODE_ENV === 'production') {
     grunt.registerTask('default', ['concurrent']);
   } else {
-    grunt.registerTask('default', ['jshint', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'shell', 'concurrent']);
     // grunt.registerTask('post-install', []);
   }
 };
