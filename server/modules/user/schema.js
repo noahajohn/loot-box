@@ -12,32 +12,45 @@ const mongoose = require('mongoose');
 
 // define user schema
 var userSchema = mongoose.Schema({
-  // basic info
-  // email: {
-  //   type: String,
-  //   unique: true,
-  //   required: true,
-  //   validate: {
-  //     isAsync: false,
-  //     validator: validator.isEmail,
-  //     message: 'invalid email'
-  //   }
-  // },
   user_name: {
     type: String,
     unique: true,
     required: true
   },
-  // password related
-  // salt: String,
-  // hashed_password: String,
-  // resetPasswordToken: String,
-  // resetPasswordExpires: Date,
-  // remember_me_token: String,
-  // config
+  google_id: {
+    type: String,
+    unique: true
+  },
   api_key: String,
-  
+  item_collection: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
+  }
 });
+
+
+function addItem(user, item) {
+  if (user.item_collection[item.id] === undefined) {
+    user.item_collection[item.id] = 0;
+  }
+  user.item_collection[item.id] +=1;
+  user.markModified('item_collection');
+}
+userSchema.methods.addItemToCollection = function (item) {
+  addItem(this, item);
+  return this.save();
+};
+
+userSchema.methods.addMultipleItemsToCollection = function (items) {
+  items.map((item) => {
+    addItem(this, item);
+  });
+  return this.save();
+};
+
+// userSchema.methods = {
+//   addItemToCollection: addItemToCollection.bind(userSchema),
+// };
 
 // userSchema.virtual('password')
 //   .set(function (password) {
@@ -65,6 +78,7 @@ var userSchema = mongoose.Schema({
 //   }
 //   next();
 // });
+
 
 // userSchema.methods = {
 //   authenticate: function (password) {

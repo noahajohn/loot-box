@@ -1,5 +1,5 @@
 const paths = {
-  js: [
+  jsSrcs: [
     'server.js',
     'config/*.js',
     'server/modules/**/routes_v1.js',
@@ -27,13 +27,12 @@ module.exports = function(grunt) {
         },
       },
     },
-    jshint: {
-      all: {
-        src: paths.js,
-        options: {
-          jshintrc: '.jshintrc'
-        }
-      }
+    eslint: {
+      options: {
+        configFile: '.eslintrc.json',
+        // rulePaths: ['conf/rules']
+      },
+      target: paths.jsSrcs
     },
     nodemon: {
       dev: {
@@ -68,7 +67,7 @@ module.exports = function(grunt) {
   if (process.env.NODE_ENV === 'production') {
     grunt.registerTask('default', ['concurrent']);
   } else {
-    grunt.registerTask('default', ['jshint', 'shell', 'concurrent']);
+    grunt.registerTask('default', ['eslint', 'shell', 'concurrent']);
     // grunt.registerTask('post-install', []);
   }
 };

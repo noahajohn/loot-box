@@ -36,7 +36,6 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-concurrent": "~2.3.0",
-    "grunt-contrib-jshint": "~1.1.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-env": "^0.4.4",
     "grunt-nodemon": "^0.4.0",
@@ -44,15 +43,17 @@
     "load-grunt-tasks": "^3.5.2",
     "lodash": "^4.17.2",
     "method-override": "^2.3.10",
-    "mongoose": "^4.4.14",
+    "mongoose": "^4.13.6",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "request": "^2.83.0",
     "standard-http-error": "^2.0.1",
     "time-grunt": "^1.4.0"
   },
   "devDependencies": {
     "csvtojson": "^1.1.9",
+    "grunt-eslint": "^20.1.0",
     "npm-check-updates": "^2.6.1"
   }
 }

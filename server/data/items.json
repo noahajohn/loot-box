@@ -59,5 +59,19 @@
 {"id":"57","name":"Red shell","text":"AKA the reason you came in 2nd.","rarity":"rare"},
 {"id":"58","name":"Green shell","text":"Dangerous in the hands of an expert.","rarity":"common"},
 {"id":"59","name":"Electrified Star","text":"Gives you a god-like sugar rush.","rarity":"epic"},
-{"id":"60","name":"Moldy tome","text":"Mentions something about a tower.","rarity":"rare"}
+{"id":"60","name":"Moldy tome","text":"Mentions something about a tower.","rarity":"rare"},
+{"id":"61","name":"Baby powder","text":"Helps alleviate irritation due to chaffing.","rarity":"common"},
+{"id":"62","name":"Assorted diapers","text":"No need to take bio breaks anymore!","rarity":"common"},
+{"id":"63","name":"Bubble gum","text":"Prefered brand for ass kickers.","rarity":"common"},
+{"id":"64","name":"Rubble","text":"Looks to be from a destroyed auction house.","rarity":"common"},
+{"id":"66","name":"Scroll of town portal","text":"Old school hearthing technology","rarity":"common"},
+{"id":"67","name":"Deckard's cane","text":"His name is on it.","rarity":"rare"},
+{"id":"68","name":"Wall #4","text":"Someone wrote \"break me\" on it.","rarity":"rare"},
+{"id":"69","name":"Down-voted Reddit post","text":"I wonder what the topic is�","rarity":"epic"},
+{"id":"70","name":"Airdrop lootbox skin","text":"Historically accurate","rarity":"rare"},
+{"id":"71","name":"Spider silk","text":"The duct-tape of its day.","rarity":"common"},
+{"id":"72","name":"Arachnid eye","text":"It must have a use.","rarity":"common"},
+{"id":"73","name":"Scorpion stinger","text":"The tip is still moist.","rarity":"common"},
+{"id":"74","name":"Grey wolf pelt","text":"Smells when wet.","rarity":"common"},
+{"id":"75","name":"Wolf fang","text":"Pointy.","rarity":"common"}
 ]
