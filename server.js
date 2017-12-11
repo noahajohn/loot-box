@@ -10,7 +10,7 @@ const pass = require('./config/pass');
 // const RateLimit = require('express-rate-limit');
 const HttpError = require('standard-http-error');
 const app = express();
-
+const isProd = process.env.NODE_ENV === 'production';
 // const apiLimiter = new RateLimit({
 //   windowMs: 10*1*1000, // 10 seconds
 //   max: 150,
@@ -26,7 +26,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongoose error:'));
 
 // Redirect all HTTP traffic to HTTPS in production
-if (process.env.NODE_ENV === 'production') {
+if (isProd) {
   app.use(enforce.HTTPS({trustProtoHeader: true}));
 }
 
@@ -38,6 +38,7 @@ app.use(morgan('dev'));
 
 function errorHandler (err, req, res, next) { //eslint-disable-line
   let statusCode = 500;
+  if (!isProd) console.log(err);
   switch (err.name) {
     case 'HttpError':
       statusCode = err.code;

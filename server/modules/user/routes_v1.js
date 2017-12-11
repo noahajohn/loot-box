@@ -40,7 +40,7 @@ function home(req, res) {
   res.json(resObj);
 }
 
-function test() {
+function test(req, res) {
   const testPath = path.join(__dirname, '..', '..', '..', 'login.html');
   console.log(testPath);
   res.sendFile(testPath);
@@ -81,10 +81,19 @@ function getCollection(req, res, next) {
   }
 }
 
+function getItemData(req, res, next) {
+  try {
+    res.json(data);
+  } catch (e) {
+    next(e);
+  }
+}
+
 function setup(app) {
   app.get('/api/v1/roll', roll);
   app.get('/api/v1/open', open);
   app.get('/api/v1/collection', getCollection);
+  app.get('/api/v1/data/items', getItemData);
   app.get('/', home);
   app.get('/test/google-auth', test);
 
