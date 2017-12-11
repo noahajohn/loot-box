@@ -63,7 +63,7 @@ function errorHandler (err, req, res, next) { //eslint-disable-line
 
 // app.use('/api/*', apiLimiter);
 
-app.all('/api/v1/*', pass.ensureBasicAuth, pretty({query: 'pretty'}), function (req, res, next) {
+app.all('/api/v1/*', pass.ensureBearerAuth, pretty({query: 'pretty'}), function (req, res, next) {
   next();
 });
 

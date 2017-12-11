@@ -1,10 +1,17 @@
 // const HttpError = require("standard-http-error");
 const passport  = require('passport');
+const fs = require('fs');
+const path = require('path');
 
 const BasicStrategy  = require('../lib/passport-http-as').BasicStrategy;
-// const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const BearerStrategy = require('passport-http-bearer').Strategy;
 
 const {User} = require('../server/modules/user/schema');
+const devCredFile = path.join(__dirname,'..', '.keys', 'credentials.json');
+const CLIENT_ID = process.env.OAUTH_GOOGLE_CLIENT_ID || JSON.parse(fs.readFileSync(devCredFile, 'utf8')).OAUTH_GOOGLE_CLIENT_ID || null; //eslint-disable-line
+const GoogleAuth = require('google-auth-library');
+const auth = new GoogleAuth;
+const client = new auth.OAuth2(CLIENT_ID, '', '');
 
 
 ///////// define authentication strategies
@@ -20,19 +27,29 @@ passport.use(new BasicStrategy({passwordRequired: false},
   }
 ));
 
+passport.use(new BearerStrategy(
+  (token, done) => {
+    client.verifyIdToken(token, CLIENT_ID, async (err, login) => {
+      if (err) {
+        return done(null, false);
+      }
+      console.log('token verified by google!');
+      const payload = login.getPayload();
+      const googleId = payload['sub'];
+      try {
+        let user = await User.findOne({google_id: googleId});
+        if (!user) {
+          const email = payload['email'];
+          user = await User.create({google_id: googleId, user_name: email, email: email});
+        }
+        return done(null, user, {scope: 'all'});
+      } catch (e) {
+        return done(e);
+      }
+    });
+  }
+));
 
-
-// passport.use(new GoogleStrategy({
-//     clientID: GOOGLE_CLIENT_ID,
-//     clientSecret: GOOGLE_CLIENT_SECRET,
-//     callbackURL: "http://www.example.com/auth/google/callback"
-//   },
-//   function(accessToken, refreshToken, profile, cb) {
-//     User.findOrCreate({ google_id: profile.id }, function (err, user) {
-//       return cb(err, user);
-//     });
-//   }
-// ));
 
 exports.ensureBasicAuth = passport.authenticate('basic', {session: false});
-// exports.ensureGoogleAuth = passport.authenticate('google', {session: false});
+exports.ensureBearerAuth = passport.authenticate('bearer', {session: false});

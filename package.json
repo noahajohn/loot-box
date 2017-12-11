@@ -33,6 +33,7 @@
     "express-prettify": "0.0.9",
     "express-rate-limit": "^2.9.0",
     "express-sslify": "^1.1.0",
+    "google-auth-library": "^0.12.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-concurrent": "~2.3.0",
@@ -46,10 +47,11 @@
     "mongoose": "^4.13.6",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0",
+    "passport-http-bearer": "^1.0.1",
     "request": "^2.83.0",
     "standard-http-error": "^2.0.1",
-    "time-grunt": "^1.4.0"
+    "time-grunt": "^1.4.0",
+    "validator": "^9.2.0"
   },
   "devDependencies": {
     "csvtojson": "^1.1.9",

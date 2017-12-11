@@ -34,11 +34,16 @@ function randomInt (low, high) {
 }
 
 function home(req, res) {
-  console.log('home');
   const resObj = {
     msg: 'hello world, try "/api/v1/roll or /api/v1/open". Add ?pretty for formatted JSON output.'
   };
   res.json(resObj);
+}
+
+function test() {
+  const testPath = path.join(__dirname, '..', '..', '..', 'login.html');
+  console.log(testPath);
+  res.sendFile(testPath);
 }
 
 function rollForItem(minTier) {
@@ -81,6 +86,7 @@ function setup(app) {
   app.get('/api/v1/open', open);
   app.get('/api/v1/collection', getCollection);
   app.get('/', home);
+  app.get('/test/google-auth', test);
 
 }
 
