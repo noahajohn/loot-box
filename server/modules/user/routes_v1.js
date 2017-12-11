@@ -15,7 +15,7 @@ const ITEM_DROP_RATES = {
   common: 72.00,
   rare: 22.00,
   epic: 5.00,
-  lengendary: 1.00
+  legendary: 1.00
 };
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
 assert(sumValues(ITEM_DROP_RATES)-100 < Number.EPSILON);
