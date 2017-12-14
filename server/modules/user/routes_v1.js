@@ -55,11 +55,12 @@ function rollForItem(minTier) {
   return itemBucket[indexRoll];
 }
 
-const MANA_COST = 10;
+const DEFAULT_MANA_COST = 10;
 async function open(req, res, next) {
+  const manaCost = req.query.test !== undefined ? 0 : DEFAULT_MANA_COST;
   try {
     const items = [rollForItem('rare'), rollForItem(), rollForItem()];
-    await req.user.addItemsToCollectionAndSpendMana(items, MANA_COST);
+    await req.user.addItemsToCollectionAndSpendMana(items, manaCost);
     res.json(items);
   } catch (e) {
     next(e);
