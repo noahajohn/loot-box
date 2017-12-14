@@ -7,10 +7,13 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const pass = require('./config/pass');
+const {regenManaCron} = require('./server/modules/user/regenManaCron');
+regenManaCron.start();
 // const RateLimit = require('express-rate-limit');
 const HttpError = require('standard-http-error');
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
+
 // const apiLimiter = new RateLimit({
 //   windowMs: 10*1*1000, // 10 seconds
 //   max: 150,
