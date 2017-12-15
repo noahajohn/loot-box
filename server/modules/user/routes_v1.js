@@ -1,6 +1,10 @@
 const assert = require('assert');
 const itemData = require('../items/itemData').items;
 const path = require('path');
+const {User} = require('./schema');
+const Promise = require('bluebird');
+const validator = require('validator');
+const HttpError = require('standard-http-error');
 
 const data = itemData.all;
 const items = itemData.byRarity;
@@ -94,6 +98,65 @@ function getItemData(req, res, next) {
   }
 }
 
+function parsePaginationParams(req) {
+  let page = req.query.page || '1';
+  if (!validator.isInt(page, {min: 1})) {
+    throw new HttpError(400, 'page value, "'+page+'", is not an integer greater than 1');
+  }
+  page = parseInt(page);
+
+  let limit = req.query.limit || '10';
+  if (!validator.isInt(limit, {min: 1, max: 50})) {
+    throw new HttpError(400, 'limit value, \''+limit+'\', is not an integer between 1 and 50 inclusive');
+  }
+  limit = parseInt(limit);
+
+  return {
+    page: page,
+    limit: limit
+  };
+}
+
+// NEED TO REFACTOR THIS
+async function getLeaderboard(req, res, next) {
+  try {
+    const {page, limit} = parsePaginationParams(req, next);
+    const skip = (page-1)*limit;
+
+    const fields = {
+      _id: 0,
+      user_name: 1,
+      'stats.collection_score': 1
+    };
+
+    const topUsersPromise = User.find({}, fields).sort({'stats.collection_score': -1}).skip(skip).limit(limit).exec();
+    const totalDocs = await User.count({}).exec();
+
+    const fullUrl = req.protocol + '://' + req.get('host') + req.path;
+
+    let nextUrl = false;
+    let prevUrl = false;
+    const prevPage = page-1;
+    const nextPage = page+1;
+
+    if (skip < totalDocs) nextUrl = fullUrl+'?page='+nextPage+'&limit='+limit;
+    if (skip > limit) prevUrl = fullUrl+'?page='+prevPage+'&limit='+limit;
+
+    const resObj = {
+      object: 'list',
+      page: page,
+      limit: limit,
+      prev_url: prevUrl,
+      next_url: nextUrl,
+      total: totalDocs,
+      data: await topUsersPromise
+    };
+    res.json(resObj);
+  } catch (e) {
+    next(e);
+  }
+}
+
 function setup(app) {
   app.get('/api/v1/roll', roll);
   app.get('/api/v1/open', open);
@@ -101,6 +164,7 @@ function setup(app) {
   app.get('/api/v1/data/items', getItemData);
   app.get('/', home);
   app.get('/test/google-auth', test);
+  app.get('/api/v1/leaderboard', getLeaderboard);
 
 }
 
