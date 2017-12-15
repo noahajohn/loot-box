@@ -1,15 +1,18 @@
 const assert = require('assert');
-const fs = require('fs');
+const itemData = require('../items/itemData').items;
 const path = require('path');
-const dataPath = path.join(__dirname, '..', '..', 'data', 'items.json');
-const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
-const items = {
-  common: data.filter((e) => e.rarity === 'common'),
-  rare: data.filter((e) => e.rarity === 'rare'),
-  epic: data.filter((e) => e.rarity === 'epic'),
-  legendary: data.filter((e) => e.rarity === 'legendary')
-};
+const data = itemData.all;
+const items = itemData.byRarity;
+// const dataPath = path.join(__dirname, '..', '..', 'data', 'items.json');
+// const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+// const items = {
+//   common: data.filter((e) => e.rarity === 'common'),
+//   rare: data.filter((e) => e.rarity === 'rare'),
+//   epic: data.filter((e) => e.rarity === 'epic'),
+//   legendary: data.filter((e) => e.rarity === 'legendary')
+// };
 
 const ITEM_DROP_RATES = {
   common: 72.00,

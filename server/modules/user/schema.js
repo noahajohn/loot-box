@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const Promise = require('bluebird');
 const HttpError = require('standard-http-error');
+const itemData = require('../items/itemData').items;
 
 const STARTING_MANA = 30;
 // define user schema
@@ -36,6 +37,12 @@ var userSchema = mongoose.Schema({
   mana: {
     type: Number,
     default: STARTING_MANA
+  },
+  stats: {
+    collection_score: {
+      type: Number,
+      default: 0
+    }
   }
 });
 
@@ -60,6 +67,16 @@ function addItem(user, item) {
   user.item_collection[item.id] +=1;
   user.markModified('item_collection');
 }
+
+function updateCollectionScore(user) {
+  let newTotal = 0;
+  Object.keys(user.item_collection).forEach((itemId) => {
+    // value * count
+    newTotal += itemData.byId[itemId].value * user.item_collection[itemId];
+  });
+  user.stats.collection_score = newTotal;
+}
+
 userSchema.methods.addItemToCollection = function (item) {
   addItem(this, item);
   return this.save();
@@ -81,6 +98,7 @@ userSchema.methods.addItemsToCollectionAndSpendMana = function (items, manaCost)
       items.map((item) => {
         addItem(this, item);
       });
+      updateCollectionScore(this);
       this.save().then(resolve).catch(reject);
     }
   });

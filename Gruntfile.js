@@ -4,6 +4,7 @@ const paths = {
     'config/*.js',
     'server/modules/**/routes_v1.js',
     'server/modules/**/schema.js',
+    'server/modules/**/*.js',
     'server/modules/**/test/*.js'
   ]
 };
