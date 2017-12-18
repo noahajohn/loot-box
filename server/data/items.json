@@ -73,5 +73,8 @@
 {"id":"72","name":"Arachnid eye","text":"It must have a use.","rarity":"common"},
 {"id":"73","name":"Scorpion stinger","text":"The tip is still moist.","rarity":"common"},
 {"id":"74","name":"Grey wolf pelt","text":"Smells when wet.","rarity":"common"},
-{"id":"75","name":"Wolf fang","text":"Pointy.","rarity":"common"}
+{"id":"75","name":"Wolf fang","text":"Pointy.","rarity":"common"},
+{"id":"76","name":"Rubber ball","text":"Now with 50% more rebound!","rarity":"common"},
+{"id":"77","name":"Azure Erinaceinae","text":"One of the fastest beings in the universe.","rarity":"legendary"},
+{"id":"78","name":"Ancient Plumber","text":"Despite his age, he still has a real spring in his step.","rarity":"legendary"}
 ]

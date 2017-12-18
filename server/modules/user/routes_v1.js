@@ -14,8 +14,6 @@ function test(req, res) {
   res.sendFile(testPath);
 }
 
-
-
 function getCollection(req, res, next) {
   try {
     res.json(req.user.item_collection);
