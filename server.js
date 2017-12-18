@@ -74,6 +74,9 @@ app.all('/api/v1/*', pass.ensureBearerAuth, pretty({query: 'pretty'}), function 
 // app routes
 [
   './server/modules/user/routes_v1',
+  './server/modules/stats/routes_v1',
+  './server/modules/items/routes_v1',
+  './server/modules/generator/routes_v1',
 ].forEach(function (routePath) {
     require(routePath)(app);
 });
